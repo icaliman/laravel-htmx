@@ -12,7 +12,7 @@ class TodoForm extends HtmxComponent
     /**
      * Create a new component instance.
      */
-    public function __construct(public ?MessageBag $errors = null)
+    public function __construct(public string $title = '', public ?MessageBag $errors = null)
     {
         if (!$this->errors) {
             $this->errors = new MessageBag();

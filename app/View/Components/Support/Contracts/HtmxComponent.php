@@ -26,4 +26,9 @@ abstract class HtmxComponent extends Component implements Htmlable, Responsable
     {
         return view($this->view, $this->data());
     }
+
+    public function __toString()
+    {
+        return $this->toHtml();
+    }
 }

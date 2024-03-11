@@ -23,12 +23,12 @@ trait HandlesPageComponents
         ];
 
         return Blade::render(<<<'HTML'
-                    @extends($layout->view, $layout->params)
+                @extends($layout->view, $layout->params)
 
-                    @section($layout->slotOrSection)
-                        {!! $content !!}
-                    @endsection
-                HTML, [
+                @section($layout->slotOrSection)
+                    {!! $content !!}
+                @endsection
+            HTML, [
             'content' => $content,
             'layout' => $layoutConfig,
         ]);
