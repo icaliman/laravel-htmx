@@ -43,19 +43,19 @@ Route::post('/store', function (Request $request) {
 
 Route::post('/toggle/{todo}', function (Request $request, int $todo) {
     $todos = $request->session()->get('todos-list', []);
-    $todoItem = collect($todos)->firstWhere('id', $todo);
-    $todoItem['done'] = !isset($todoItem['done']) || !$todoItem['done'];
-    $todos = collect($todos)->where('id', '!=', $todo);
 
-    if ($todoItem['done']) {
-        $todos = $todos->push($todoItem);
-    } else {
-        $todos = $todos->prepend($todoItem);
-    }
+    $todos = collect($todos)->map(function ($item) use ($todo) {
+        if ($item['id'] === $todo) {
+            $item['done'] = !isset($item['done']) || !$item['done'];
+        }
+
+        return $item;
+    });
+
 
     $request->session()->put('todos-list', $todos);
 
-    return Todo::make($todoItem);
+    return Todo::make($todos->firstWhere('id', $todo));
 });
 
 
