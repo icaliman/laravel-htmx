@@ -45,10 +45,28 @@
             </div>
         </div>
     </div>
+    <dialog id="htmxErrorModal" class="modal">
+        <div class="modal-box bg-[#18171B] w-11/12 max-w-5xl min-h-[50vh]"></div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
     <script>
         document.body.addEventListener('htmx:configRequest', function(evt) {
             // Add csrf token to all htmx requests
             evt.detail.headers['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+        });
+        document.body.addEventListener('htmx:beforeSwap', function(evt) {
+            console.log(evt);
+            if (evt.detail.xhr.status === 500) {
+                // alert('Error');
+                console.log(evt.detail);
+                evt.detail.shouldSwap = true;
+                evt.detail.etc.swapOverride = 'innerHTML';
+                evt.detail.target = htmx.find("#htmxErrorModal .modal-box");
+
+                htmx.find("#htmxErrorModal").showModal();
+            }
         });
     </script>
 </body>

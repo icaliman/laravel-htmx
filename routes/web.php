@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Requests\HtmxRequest;
+use App\Http\Requests\TodoRequest;
 use App\View\Components\Todo;
+use App\View\Components\TodoCounter;
 use App\View\Components\TodoForm;
 use App\View\Components\TodoList;
 use App\View\Components\Todos;
@@ -23,7 +25,17 @@ use Illuminate\Support\Facades\Validator;
 
 Route::get('/', Todos::class);
 
-Route::post('/store', function (Request $request) {
+Route::post('/store', function (TodoRequest $request) {
+    $todos = $request->session()->get('todos-list', []);
+    $data = $request->validated();
+    $data['id'] = count($todos) + 1;
+    $todos = collect($todos)->prepend($data);
+    $request->session()->put('todos-list', $todos);
+
+    return join([TodoForm::make(), Todo::make($data), TodoCounter::make(['todos' => $todos])]);
+});
+
+Route::post('/store/with-validator', function (TodoRequest $request) {
     $validator = Validator::make($request->all(), [
         'title' => 'required|max:255',
     ]);
@@ -38,10 +50,11 @@ Route::post('/store', function (Request $request) {
     $todos = collect($todos)->prepend($data);
     $request->session()->put('todos-list', $todos);
 
-    return TodoForm::make() . Todo::make($data);
+    return join([TodoForm::make(), Todo::make($data)]);
 });
 
 Route::post('/toggle/{todo}', function (Request $request, int $todo) {
+
     $todos = $request->session()->get('todos-list', []);
 
     $todos = collect($todos)->map(function ($item) use ($todo) {
@@ -55,7 +68,10 @@ Route::post('/toggle/{todo}', function (Request $request, int $todo) {
 
     $request->session()->put('todos-list', $todos);
 
-    return Todo::make($todos->firstWhere('id', $todo));
+    return join([
+        Todo::make($todos->firstWhere('id', $todo)),
+        TodoCounter::make(['todos' => $todos]),
+    ]);
 });
 
 
