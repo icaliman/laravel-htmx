@@ -74,6 +74,19 @@ Route::post('/toggle/{todo}', function (Request $request, int $todo) {
     ]);
 });
 
+Route::delete('/delete/{todo}', function (Request $request, int $todo) {
+
+    $todos = $request->session()->get('todos-list', []);
+
+    $todos = collect($todos)->where('id', '!=', $todo);
+
+    $request->session()->put('todos-list', $todos);
+
+    return join([
+        TodoCounter::make(['todos' => $todos]),
+    ]);
+});
+
 
 Route::post('/validate', function (Request $request) {
     $validator = Validator::make($request->all(), [

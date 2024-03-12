@@ -14,7 +14,7 @@ class Todo extends HtmxComponent
     /**
      * Create a new component instance.
      */
-    public function __construct(public int $id, public string $title, public bool $done = false)
+    public function __construct(public int $id, public string $title, public bool $done = false, public bool $deleted = false)
     {
     }
 }

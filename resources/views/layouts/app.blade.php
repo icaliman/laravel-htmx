@@ -17,6 +17,40 @@
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .todo-item {
+            transition: all 0.3s;
+        }
+
+        .todo-item.htmx-swapping {
+            animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+                600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fade-out {
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes slide-from-right {
+            from {
+                transform: translateX(90px);
+            }
+        }
+
+        @keyframes slide-to-left {
+            to {
+                transform: translateX(-90px);
+            }
+        }
+    </style>
 </head>
 
 <body class="antialiased">
