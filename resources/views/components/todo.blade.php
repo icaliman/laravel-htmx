@@ -11,7 +11,7 @@
 
             {{ $title }}
         </h2>
-        <button class="btn btn-xs btn-ghost btn-circle" hx-delete="/delete/{{ $id }}"
+        <button class="btn btn-xs btn-ghost btn-circle" hx-delete="/todos/{{ $id }}"
             hx-swap="outerHTML swap:500ms" hx-trigger="click consume">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">

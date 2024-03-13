@@ -2,8 +2,8 @@
 
 namespace App\View\Components;
 
-use App\View\Components\Support\Contracts\HtmxComponent;
 use Illuminate\Support\MessageBag;
+use Xlited\Lamx\Components\HtmxComponent;
 
 class TodoForm extends HtmxComponent
 {

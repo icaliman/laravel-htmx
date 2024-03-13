@@ -2,10 +2,10 @@
 
 namespace App\View\Components;
 
-use App\View\Components\Support\Contracts\HtmxComponent;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
+use Xlited\Lamx\Components\HtmxComponent;
 
 class Todos extends HtmxComponent
 {

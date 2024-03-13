@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\View\Components\TodoForm;
-use Illuminate\Foundation\Http\FormRequest;
+use Xlited\Lamx\Requests\HtmxRequest;
 
 class TodoRequest extends HtmxRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Requests\HtmxRequest;
+use App\Http\Controllers\TodoController;
 use App\Http\Requests\TodoRequest;
 use App\View\Components\Todo;
 use App\View\Components\TodoCounter;
@@ -24,83 +24,7 @@ use Illuminate\Support\Facades\Validator;
 */
 
 Route::get('/', Todos::class);
+Route::post('/toggle/{todo}', [TodoController::class, 'toggle']);
+Route::resource('/todos', TodoController::class)->only(['index', 'store', 'destroy']);
 
-Route::post('/store', function (TodoRequest $request) {
-    $todos = $request->session()->get('todos-list', []);
-    $data = $request->validated();
-    $data['id'] = count($todos) + 1;
-    $todos = collect($todos)->prepend($data);
-    $request->session()->put('todos-list', $todos);
-
-    return join([TodoForm::make(), Todo::make($data), TodoCounter::make(['todos' => $todos])]);
-});
-
-Route::post('/store/with-validator', function (TodoRequest $request) {
-    $validator = Validator::make($request->all(), [
-        'title' => 'required|max:255',
-    ]);
-
-    if ($validator->fails()) {
-        return TodoForm::make(['errors' => $validator->errors()]);
-    }
-
-    $todos = $request->session()->get('todos-list', []);
-    $data = $validator->validated();
-    $data['id'] = count($todos) + 1;
-    $todos = collect($todos)->prepend($data);
-    $request->session()->put('todos-list', $todos);
-
-    return join([TodoForm::make(), Todo::make($data)]);
-});
-
-Route::post('/toggle/{todo}', function (Request $request, int $todo) {
-
-    $todos = $request->session()->get('todos-list', []);
-
-    $todos = collect($todos)->map(function ($item) use ($todo) {
-        if ($item['id'] === $todo) {
-            $item['done'] = !isset($item['done']) || !$item['done'];
-        }
-
-        return $item;
-    });
-
-
-    $request->session()->put('todos-list', $todos);
-
-    return join([
-        Todo::make($todos->firstWhere('id', $todo)),
-        TodoCounter::make(['todos' => $todos]),
-    ]);
-});
-
-Route::delete('/delete/{todo}', function (Request $request, int $todo) {
-
-    $todos = $request->session()->get('todos-list', []);
-
-    $todos = collect($todos)->where('id', '!=', $todo);
-
-    $request->session()->put('todos-list', $todos);
-
-    return join([
-        TodoCounter::make(['todos' => $todos]),
-    ]);
-});
-
-
-Route::post('/validate', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'title' => 'required|max:255',
-    ]);
-
-    if ($validator->fails()) {
-        return TodoForm::make([
-            'title' => $request->get('title'),
-            'errors' => $validator->errors()
-        ]);
-    }
-
-    return TodoForm::make([
-        'title' => $request->get('title'),
-    ]);
-});
+Route::post('/validate', [TodoController::class, 'validateForm']);

@@ -2,10 +2,10 @@
 
 namespace App\View\Components;
 
-use App\View\Components\Support\Contracts\HtmxComponent;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
+use Xlited\Lamx\Components\HtmxComponent;
 
 class TodoList extends HtmxComponent
 {
@@ -16,7 +16,5 @@ class TodoList extends HtmxComponent
      */
     public function __construct(public array|Collection $todos = [])
     {
-        $this->count = count($this->todos);
-        $this->done = collect($this->todos)->where('done', true)->count();
     }
 }
