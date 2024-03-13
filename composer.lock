@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee64418c2420313e3484c4ce4bb50bb0",
+    "content-hash": "bd91a9fa329d9fa328aeec32cbc44b2d",
     "packages": [
         {
             "name": "brick/math",
@@ -5687,11 +5687,17 @@
         },
         {
             "name": "xlited/lamx",
-            "version": "dev-main",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xlited/lamx.git",
+                "reference": "4bf3f3c1425aa8110223c0abbf7165eb3ec1df94"
+            },
             "dist": {
-                "type": "path",
-                "url": "lamx",
-                "reference": "0694e8a9c8d17b57019f92d0e7b491f6031af658"
+                "type": "zip",
+                "url": "https://api.github.com/repos/xlited/lamx/zipball/4bf3f3c1425aa8110223c0abbf7165eb3ec1df94",
+                "reference": "4bf3f3c1425aa8110223c0abbf7165eb3ec1df94",
+                "shasum": ""
             },
             "require": {
                 "illuminate/support": "^11.0|^10.0",
@@ -5717,19 +5723,7 @@
                     "Xlited\\Lamx\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Xlited\\Lamx\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ],
-                "test-coverage": [
-                    "vendor/bin/phpunit --coverage-html coverage"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5748,9 +5742,11 @@
                 "laravel",
                 "xlited"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/xlited/lamx/issues",
+                "source": "https://github.com/xlited/lamx/tree/0.1.0"
+            },
+            "time": "2024-03-13T10:09:56+00:00"
         }
     ],
     "packages-dev": [
@@ -8190,10 +8186,8 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "xlited/lamx": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

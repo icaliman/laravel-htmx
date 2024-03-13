@@ -7,7 +7,7 @@
         "framework"
     ],
     "license": "MIT",
-    "repositories": [
+    "repositories_backup": [
         {
             "type": "path",
             "url": "lamx/"
@@ -19,7 +19,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "xlited/lamx": "dev-main"
+        "xlited/lamx": "^0.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -71,6 +71,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

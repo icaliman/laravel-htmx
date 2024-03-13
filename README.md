@@ -3,3 +3,4 @@
 
 ## Todo App made with Laravel and Htmx
 
+This app is built using [Lamx](https://github.com/xlited/lamx).
