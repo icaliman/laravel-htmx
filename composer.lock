@@ -5687,16 +5687,16 @@
         },
         {
             "name": "xlited/lamx",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xlited/lamx.git",
-                "reference": "4bf3f3c1425aa8110223c0abbf7165eb3ec1df94"
+                "reference": "ba71f4c5f2571607be1160130caab4d84f69e7fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xlited/lamx/zipball/4bf3f3c1425aa8110223c0abbf7165eb3ec1df94",
-                "reference": "4bf3f3c1425aa8110223c0abbf7165eb3ec1df94",
+                "url": "https://api.github.com/repos/xlited/lamx/zipball/ba71f4c5f2571607be1160130caab4d84f69e7fe",
+                "reference": "ba71f4c5f2571607be1160130caab4d84f69e7fe",
                 "shasum": ""
             },
             "require": {
@@ -5734,7 +5734,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Build apps in Laravel + htmx",
+            "description": "Build Laravel apps with </> htmx",
             "homepage": "https://github.com/xlited/lamx",
             "keywords": [
                 "htmx",
@@ -5744,9 +5744,15 @@
             ],
             "support": {
                 "issues": "https://github.com/xlited/lamx/issues",
-                "source": "https://github.com/xlited/lamx/tree/0.1.0"
+                "source": "https://github.com/xlited/lamx/tree/0.1.1"
             },
-            "time": "2024-03-13T10:09:56+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/icaliman",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-14T09:10:46+00:00"
         }
     ],
     "packages-dev": [
