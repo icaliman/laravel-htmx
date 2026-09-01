@@ -2,22 +2,19 @@
 
 namespace App\View\Components;
 
-use Closure;
+use App\Support\TodoStore;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
 use Xlited\Lamx\Components\HtmxComponent;
 
+/**
+ * The page: Route::get('/', Todos::class) renders it inside layouts/app.
+ */
 class Todos extends HtmxComponent
 {
-    public string $view = 'components.todos';
+    public function __construct(protected TodoStore $store) {}
 
-    public array|Collection $todos = [];
-
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public function render(): View
     {
-        $this->todos = request()->session()->get('todos-list', []);
+        return view('components.todos', ['todos' => $this->store->all()]);
     }
 }

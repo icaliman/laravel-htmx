@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <!-- Styles -->
+    <!-- Styles & scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/htmx.org@4.0.0/dist/htmx.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
     <style>
         .todo-item {
@@ -26,21 +26,9 @@
                 600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
         }
 
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-            }
-        }
-
         @keyframes fade-out {
             to {
                 opacity: 0;
-            }
-        }
-
-        @keyframes slide-from-right {
-            from {
-                transform: translateX(90px);
             }
         }
 
@@ -90,7 +78,7 @@
                 </div>
 
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) + htmx 4
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
-<div id="todos" class="mt-8" hx-swap-oob="true">
-    <x-todo-counter :todos="$todos" />
+<div id="todos" class="mt-8">
+    <x-todo-counter />
 
     <div id="todos-list" class="grid grid-cols-1 gap-3 lg:gap-4">
         @foreach ($todos as $todo)

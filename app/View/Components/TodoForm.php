@@ -2,20 +2,25 @@
 
 namespace App\View\Components;
 
-use Illuminate\Support\MessageBag;
+use App\Support\TodoStore;
 use Xlited\Lamx\Components\HtmxComponent;
 
 class TodoForm extends HtmxComponent
 {
-    public string $view = 'components.todo-form';
+    protected function rules(): array
+    {
+        return ['title' => 'required|string|max:255'];
+    }
 
     /**
-     * Create a new component instance.
+     * Validation failures re-render the form with $errors and old('title').
+     * On success: a fresh form and the counter (swapped out-of-band) plus the
+     * new todo, which the form's hx-target prepends to the list.
      */
-    public function __construct(public string $title = '', public ?MessageBag $errors = null)
+    public function save(TodoStore $store): array
     {
-        if (!$this->errors) {
-            $this->errors = new MessageBag();
-        }
+        $todo = $store->add($this->validate()['title']);
+
+        return [static::make(), TodoCounter::make(), Todo::make($todo)];
     }
 }
