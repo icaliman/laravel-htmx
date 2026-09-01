@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "586ade000a30a76500d0a92d675ecd03",
+    "content-hash": "8c3f72cf0cbb3b721315620d87da69d6",
     "packages": [
         {
             "name": "brick/math",
@@ -6037,8 +6037,8 @@
             "version": "0.1.99",
             "dist": {
                 "type": "path",
-                "url": "lamx",
-                "reference": "04658304dec9b8048c0824b5706f62679e2930a5"
+                "url": "../lamx",
+                "reference": "b094304f8cde0ac3ef2645961a70d136da0f87ac"
             },
             "require": {
                 "illuminate/http": "^10.0|^11.0|^12.0|^13.0",

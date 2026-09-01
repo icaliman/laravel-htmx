@@ -26,5 +26,3 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 
-# local checkout of the lamx package (composer path repository)
-/lamx

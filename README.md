@@ -21,5 +21,5 @@ php artisan serve
 php artisan test
 ```
 
-The `xlited/lamx` package is installed from the local `lamx/` checkout (a Composer path
-repository); point the symlink at your clone of https://github.com/xlited/lamx.
+The `xlited/lamx` package is installed from a Composer path repository pointing at `../lamx`,
+so clone https://github.com/xlited/lamx next to this repository.
