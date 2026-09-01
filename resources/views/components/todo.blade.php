@@ -1,18 +1,17 @@
 <a id="todo-item-{{ $this->id }}" href="#" @class([
-    'todo-item scale-100 px-6 py-4 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500',
-    'opacity-50 line-through' => $this->done,
+    'todo-item group card card-border bg-base-100 shadow-sm transition-all duration-200 outline-none motion-safe:hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary',
+    'opacity-60' => $this->done,
 ]) hx-post="{{ $this->action('toggle') }}" hx-target="this" hx-swap="outerHTML">
-    <div class="w-full flex justify-between">
-        <h2 class="flex items-center gap-2 text-xl font-semibold text-gray-900 dark:text-white">
-            <input type="checkbox" @checked($this->done)
-                class="checkbox checkbox-lg checkbox-success border-base-300 rounded-full p-2" />
+    <div class="card-body flex-row items-center gap-4 px-5 py-4">
+        <input type="checkbox" @checked($this->done) tabindex="-1"
+            class="checkbox checkbox-success rounded-full" />
 
-            {{ $this->title }}
-        </h2>
-        <button class="btn btn-xs btn-ghost btn-circle" hx-delete="{{ $this->action('remove') }}"
-            hx-target="closest .todo-item" hx-swap="delete swap:500ms" hx-trigger="click consume">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
+        <h2 @class(['flex-1 text-lg font-medium', 'line-through' => $this->done])>{{ $this->title }}</h2>
+
+        <button type="button" class="btn btn-ghost btn-circle btn-sm text-base-content/50 hover:text-error" aria-label="Remove"
+            hx-delete="{{ $this->action('remove') }}" hx-target="closest .todo-item" hx-swap="delete swap:500ms"
+            hx-trigger="click consume">
+            <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>

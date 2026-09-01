@@ -1,9 +1,8 @@
-<div id="todo-counter" class="text-gray-400 mt-4 mb-2 text-center" hx-swap-oob="true">
+<div id="todo-counter" class="mt-10 mb-3 text-center text-sm text-base-content/60" hx-swap-oob="true">
     @if ($count > 0)
-        <span class="text-lg font-bold">{{ $count }}</span>
-        <span class="text-sm">/</span>
-        <span class="text-sm">{{ $done }} done</span>
+        <span class="text-lg font-semibold text-base-content">{{ $count }}</span>
+        <span>/ {{ $done }} done</span>
     @else
-        <span class="text-sm">No tasks</span>
+        <span>No tasks yet</span>
     @endif
 </div>
