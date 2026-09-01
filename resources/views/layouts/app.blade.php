@@ -26,12 +26,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://unpkg.com/htmx.org@4.0.0/dist/htmx.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
     <style type="text/tailwindcss">
         @theme {
             --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
         }
     </style>
     <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
         .todo-item.htmx-swapping {
             animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
                 600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
@@ -83,7 +88,7 @@
         @yield('content')
 
         <footer class="mt-16 text-center text-sm text-base-content/50">
-            Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) + htmx 4
+            Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) + htmx 4 + Alpine.js
         </footer>
     </main>
 
